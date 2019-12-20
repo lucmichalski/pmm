@@ -63,6 +63,16 @@ func (this *SetStateRequest_BuiltinAgent) Validate() error {
 func (this *SetStateResponse) Validate() error {
 	return nil
 }
+func (this *SetTunnelsStateRequest) Validate() error {
+	// Validation of proto3 map<> fields is unsupported.
+	return nil
+}
+func (this *SetTunnelsStateRequest_Tunnel) Validate() error {
+	return nil
+}
+func (this *SetTunnelsStateResponse) Validate() error {
+	return nil
+}
 func (this *StartActionRequest) Validate() error {
 	if oneOfNester, ok := this.GetParams().(*StartActionRequest_MysqlExplainParams); ok {
 		if oneOfNester.MysqlExplainParams != nil {
@@ -224,6 +234,13 @@ func (this *AgentMessage) Validate() error {
 			}
 		}
 	}
+	if oneOfNester, ok := this.GetPayload().(*AgentMessage_SetTunnelsState); ok {
+		if oneOfNester.SetTunnelsState != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.SetTunnelsState); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("SetTunnelsState", err)
+			}
+		}
+	}
 	return nil
 }
 func (this *ServerMessage) Validate() error {
@@ -287,6 +304,13 @@ func (this *ServerMessage) Validate() error {
 		if oneOfNester.CheckConnection != nil {
 			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.CheckConnection); err != nil {
 				return github_com_mwitkow_go_proto_validators.FieldError("CheckConnection", err)
+			}
+		}
+	}
+	if oneOfNester, ok := this.GetPayload().(*ServerMessage_SetTunnelsState); ok {
+		if oneOfNester.SetTunnelsState != nil {
+			if err := github_com_mwitkow_go_proto_validators.CallValidatorIfExists(oneOfNester.SetTunnelsState); err != nil {
+				return github_com_mwitkow_go_proto_validators.FieldError("SetTunnelsState", err)
 			}
 		}
 	}

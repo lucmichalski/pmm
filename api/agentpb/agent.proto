@@ -68,6 +68,21 @@ message SetStateResponse {
 
 }
 
+// SetTunnelsStateRequest is a ServerMessage asking pmm-agent to setup tunnels according to desired state.
+message SetTunnelsStateRequest {
+  // Tunnel describes desired configuration of a single tunnel for pmm-agent.
+  message Tunnel {
+    uint32 dial_port = 1;
+  }
+  map<string, Tunnel> tunnels = 2;
+}
+
+// SetTunnelsStateResponse is an AgentMessage for SetTunnelsStateRequest acceptance.
+message SetTunnelsStateResponse {
+  // TODO https://jira.percona.com/browse/PMM-4691
+
+}
+
 // MysqlExplainOutputFormat output formats supported by MySQL Explain action.
 enum MysqlExplainOutputFormat {
   MYSQL_EXPLAIN_OUTPUT_FORMAT_INVALID = 0;
@@ -187,6 +202,7 @@ message AgentMessage {
     StartActionResponse start_action = 10;
     StopActionResponse stop_action = 11;
     CheckConnectionResponse check_connection = 12;
+    SetTunnelsStateResponse set_tunnels_state = 13;
   }
 }
 
@@ -206,6 +222,7 @@ message ServerMessage {
     StartActionRequest start_action = 10;
     StopActionRequest stop_action = 11;
     CheckConnectionRequest check_connection = 12;
+    SetTunnelsStateRequest set_tunnels_state = 13;
   }
 }
 
