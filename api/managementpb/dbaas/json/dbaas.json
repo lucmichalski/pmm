@@ -562,7 +562,7 @@
                   "x-order": 1
                 },
                 "params": {
-                  "description": "PSMDBClusterParams represents PSMDB cluster parameters that can be updated.",
+                  "description": "UpdatePSMDBClusterParams represents PSMDB cluster parameters that can be updated.",
                   "type": "object",
                   "properties": {
                     "cluster_size": {
@@ -1352,7 +1352,7 @@
                   "x-order": 1
                 },
                 "params": {
-                  "description": "XtraDBClusterParams represents XtraDB cluster parameters that can be updated.",
+                  "description": "UpdateXtraDBClusterParams represents XtraDB cluster parameters that can be updated.",
                   "type": "object",
                   "properties": {
                     "cluster_size": {
